@@ -1,0 +1,46 @@
+{
+  "name": "Uber Analyzer",
+  "version": "3.0",
+  "description": "Will present an Uber driver's own data in a friendly way.",
+  "manifest_version": 2,
+  "options_ui": {
+    "page": "options.html",
+    "open_in_tab": true
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "*://riders.uber.com/trips/*"
+      ],
+      "js": ["content.js"]
+    }
+  ],
+  "icons": {
+    "128": "UACircle.png"
+  },
+  "browser_action": {
+    "default_icon": "UACircle.png",
+    "default_popup": "credentials.html"
+  },
+  "background": {
+    "page": "background.html"
+  },
+  "permissions": [
+    "*://*.uber.com/*",
+    "tabs",
+    "management",
+    "webNavigation",
+    "cookies",
+    "storage",
+    "identity"
+  ],
+  "content_security_policy": "script-src 'self' https://www.gstatic.com/ https://*.firebaseio.com https://www.googleapis.com; object-src 'self'",
+  "oauth2": {
+    "client_id": "xxxxxxxxxxxxx",
+    "scopes": [
+      "https://www.googleapis.com/auth/userinfo.email",
+      "https://www.googleapis.com/auth/userinfo.profile"
+    ]
+  },
+  "key": "xxxxxx"
+}
